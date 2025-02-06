@@ -8,6 +8,6 @@
 <img align="center" alt="Thiago-Flask" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original-wordmark.svg">    
 </div>
 <br>
-<p><b>Python:</b> Utilizamos a linguagem para criação dos utilitários que usamos para extrair as questões dos arquivos de prova, geração de novas provas utilizando filtros do usuário e no todo o nosso beck-end com Flask.</p>
+<p><b>Python:</b> Utilizamos a linguagem para criação dos utilitários que usamos para extrair as questões dos arquivos de prova, geração de novas provas utilizando filtros do usuário e no todo o nosso back-end com Flask.</p>
 <p><b>Bootstrap e Javascript:</b> Utilizamos para fazer o front-end de nossa aplicação, sendo o javascript usado principalmente na geração dos gráficos que mostramos aos usuários.</p>
 
