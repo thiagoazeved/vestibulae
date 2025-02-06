@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dash - Vestibulaê</title>
+    <!-- plugins:css -->
+    <!---->
+    <link rel="stylesheet" href="../static/vendors/feather/feather.css">
+    <link rel="stylesheet" href="../static/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../static/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../static/vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="../static/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../static/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"> -->
+    <link rel="stylesheet" href="../static/js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/favicon.png" />
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+
+
+
+</head>
+
+
+
+
+<body>
+
+
+
+
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+
+        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+                <div class="me-3">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button"
+                        data-bs-toggle="minimize">
+                        <span class="icon-menu"></span>
+                    </button>
+                </div>
+                <div>
+                    <a class="navbar-brand brand-logo" href="#">
+                        <img src="../static/img/logo2.png" alt="logo" width="200px" />
+                    </a>
+                    <a class="navbar-brand brand-logo-mini" href="#">
+                        <img src="../static/img/logo2.png" alt="logo" width="200px" />
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-top">
+                <ul class="navbar-nav">
+                    <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+                        <h1 class="welcome-text">Olá, <span class="text-black fw-bold">{{usuario['nome']}}</span></h1>
+                        <h3 class="welcome-sub-text">Seu desempenho:</h3>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+                        <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="img-xs rounded-circle" src="../static/img/faces/face1.png" alt="Profile image">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            <div class="dropdown-header text-center">
+                                <img class="img-md rounded-circle" src="../static/img/faces/face1.png"
+                                    alt="Profile image">
+                                <p class="mb-1 mt-3 font-weight-semibold">{{usuario['nome']}}</p>
+                                <p class="fw-light text-muted mb-0">{{usuario['email']}}</p>
+                            </div>
+                            <!-- <a class="dropdown-item"><i
+                                    class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>
+                                Perfil</a> -->
+
+                            <a href="contato.html" class="dropdown-item"><i
+                                    class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
+                                FAQ</a>
+                            <a class="dropdown-item" href="{{url_for('login')}}"><i
+                                    class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sair</a>
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-bs-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <!---->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_settings-panel.html -->
+            <div class="theme-setting-wrapper">
+
+                <div id="theme-settings" class="settings-panel">
+                    <i class="settings-close ti-close"></i>
+                </div>
+            </div>
+            <div id="right-sidebar" class="settings-panel">
+                <i class="settings-close ti-close"></i>
+
+                <div class="tab-content" id="setting-content">
+                    <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel"
+                        aria-labelledby="todo-section">
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('home')}}">
+                            <i class="mdi mdi-grid-large menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-category">Provas</li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="" data-toggle="modal"
+                            data-target="#listaProvaModal" aria-expanded="false" aria-controls="ui-basic">
+                            <i class="menu-icon mdi mdi-floor-plan"></i>
+                            <span class="menu-title">Gerar Prova</span>
+                    </li>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="home-tab">
+                                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab"
+                                                href="#overview" role="tab" aria-controls="overview"
+                                                aria-selected="true">Visão geral</a>
+                                        </li>
+
+                                </div>
+                                <div class="tab-content tab-content-basic">
+                                    <div class="tab-pane fade show active" id="overview" role="tabpanel"
+                                        aria-labelledby="overview">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div
+                                                    class="statistics-details d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <p class="statistics-title">Acertos</p>
+                                                        <h3 class="rate-percentage">
+                                                            {{dados['acertos']}}
+                                                        </h3>
+
+                                                    </div>
+                                                    <div>
+                                                        <p class="statistics-title">Erros</p>
+                                                        <h3 class="rate-percentage">{{dados['erros']}}</h3>
+
+                                                    </div>
+                                                    <div>
+                                                        <p class="statistics-title">Provas realizadas</p>
+                                                        <h3 class="rate-percentage">{{dados['provasRealizadas']}}</h3>
+
+                                                    </div>
+                                                    <div class="d-none d-md-block">
+                                                        <p class="statistics-title">Quantidade total de questões</p>
+                                                        <h3 class="rate-percentage">
+
+                                                            {%set qtd = dados['erros'] + dados['acertos']%}
+                                                            {{qtd}}
+
+                                                        </h3>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-8 d-flex flex-column">
+                                                <div class="row flex-grow">
+                                                    <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                                                        <div class="card card-rounded">
+                                                            <div class="card-body">
+                                                                <div
+                                                                    class="d-sm-flex justify-content-between align-items-start">
+                                                                    <div>
+                                                                        <h4 class="card-title card-title-dash">
+                                                                            Resultados por mês </h4>
+                                                                        <p class="card-subtitle card-subtitle-dash">Seus
+                                                                            acertos e erros por mês</p>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div
+                                                                    class="d-sm-flex align-items-center mt-1 justify-content-between">
+
+                                                                    <div class="me-3">
+                                                                        <div id="marketing-overview-legend"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="chartjs-bar-wrapper mt-3">
+                                                                    <canvas id="marketingOverview"></canvas>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 d-flex flex-column">
+                                                <div class="row flex-grow">
+                                                    <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                                                        <div class="card bg-primary card-rounded">
+                                                            <div class="card-body pb-0">
+                                                                <h4
+                                                                    class="card-title card-title-dash title-white text-white mb-3">
+                                                                    Respostas de hoje</h4>
+                                                                <div class="row">
+                                                                    <div class="col-sm-4">
+
+                                                                        <h2 class=" text-white mt-4">{%set
+                                                                            qtd2 =
+                                                                            dados['errosDia'] + dados['acertosDia']%}
+                                                                            {{qtd2}}</h2>
+                                                                    </div>
+                                                                    <div class="col-sm-8">
+                                                                        <div class="status-summary-chart-wrapper pb-3">
+                                                                            <canvas id="status-summary"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                                                        <div class="card card-rounded">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
+                                                                            <div class="circle-progress-width">
+                                                                                <div id="totalVisitors"
+                                                                                    class="progressbar-js-circle pr-2">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div>
+                                                                                <p class="text-small mb-2">Erros</p>
+                                                                                <h4 class="mb-0 fw-bold">
+                                                                                    {{dados['errosDia']}} </h4>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <div class="circle-progress-width">
+                                                                                <div id="visitperday"
+                                                                                    class="progressbar-js-circle pr-4">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div>
+                                                                                <p class="text-small mb-2">Acertos</p>
+                                                                                <h4 class="mb-0 fw-bold">
+                                                                                    {{dados['acertosDia']}} </h4>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-8 d-flex flex-column">
+
+
+                                                <div class="row flex-grow">
+                                                    <div class="col-12 grid-margin stretch-card">
+                                                        <div class="card card-rounded">
+                                                            <div class="card-body">
+                                                                <div
+                                                                    class="d-sm-flex justify-content-between align-items-start">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row flex-grow">
+                                                                <div class="col-12 grid-margin stretch-card">
+                                                                    <div class="card card-rounded">
+                                                                        <div class="card-body">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-12">
+                                                                                    <div
+                                                                                        class="d-sm-flex justify-content-between align-items-start">
+                                                                                        <div>
+                                                                                            <h4
+                                                                                                class="card-title card-title-dash">
+                                                                                                Resultados por matéria
+                                                                                            </h4>
+                                                                                            <p
+                                                                                                class="card-subtitle card-subtitle-dash">
+                                                                                                Seus
+                                                                                                acertos e erros por
+                                                                                                matéria</p>
+
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mt-3">
+                                                                                        <canvas
+                                                                                            id="leaveReport"></canvas>
+                                                                                        <div id="leaveReport"
+                                                                                            class="mt-5 text-center">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- content-wrapper ends -->
+                                <!-- partial:partials/_footer.html -->
+                                <footer class="footer">
+                                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
+                                    </div>
+                                </footer>
+                                <!-- partial -->
+                            </div>
+                            <!-- main-panel ends -->
+                        </div>
+                        <!-- page-body-wrapper ends -->
+                    </div>
+                    <!-- container-scroller -->
+
+                    <!-- plugins:js -->
+                    <script src="../static/vendors/js/vendor.bundle.base.js"></script>
+                    <!-- endinject -->
+                    <!-- Plugin js for this page -->
+                    <script src="../static/vendors/chart.js/Chart.min.js"></script>
+                    <script src="../static/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+                    <script src="../static/vendors/progressbar.js/progressbar.min.js"></script>
+
+                    <!-- End plugin js for this page -->
+                    <!-- inject:js -->
+                    <script src="../static/js/off-canvas.js"></script>
+                    <script src="../static/js/hoverable-collapse.js"></script>
+                    <script src="../static/js/template.js"></script>
+                    <script src="../static/js/settings.js"></script>
+                    <script src="../static/js/todolist.js"></script>
+                    <!-- endinject -->
+                    <!-- Custom js for this page-->
+
+                    <script src="../static/js/Chart.roundedBarCharts.js"></script>
+                    <!-- End custom js for this page-->
+
+                    <script>
+                        (function ($) {
+                            'use strict';
+                            $(function () {
+                                if ($("#performaneLine").length) {
+                                    var graphGradient = document.getElementById("performaneLine").getContext('2d');
+                                    var graphGradient2 = document.getElementById("performaneLine").getContext('2d');
+                                    var saleGradientBg = graphGradient.createLinearGradient(5, 0, 5, 100);
+                                    saleGradientBg.addColorStop(0, 'rgba(26, 115, 232, 0.18)');
+                                    saleGradientBg.addColorStop(1, 'rgba(26, 115, 232, 0.02)');
+                                    var saleGradientBg2 = graphGradient2.createLinearGradient(100, 0, 50, 150);
+                                    saleGradientBg2.addColorStop(0, 'rgba(0, 208, 255, 0.19)');
+                                    saleGradientBg2.addColorStop(1, 'rgba(0, 208, 255, 0.03)');
+                                    var salesTopData = {
+                                        labels: ["SEG", "TER", "QUA", "QUIN", "SEX", "SÁB", "DOM"],
+                                        datasets: [{
+                                            label: 'Acertos',
+                                            data: [50, 110, 60, 290, 200, 115, 130],
+                                            backgroundColor: saleGradientBg,
+                                            borderColor: [
+                                                '#1F3BB3',
+                                            ],
+                                            borderWidth: 1.5,
+                                            fill: true, // 3: no fill
+                                            pointBorderWidth: 1,
+                                            pointRadius: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+                                            pointHoverRadius: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                                            pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3', '#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3', '#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3', '#1F3BB3)'],
+                                            pointBorderColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff',],
+                                        }, {
+                                            label: 'Erros',
+                                            data: [30, 150, 190, 250, 120, 150, 130],
+                                            backgroundColor: saleGradientBg2,
+                                            borderColor: [
+                                                '#52CDFF',
+                                            ],
+                                            borderWidth: 1.5,
+                                            fill: true, // 3: no fill
+                                            pointBorderWidth: 1,
+                                            pointRadius: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+                                            pointHoverRadius: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                                            pointBackgroundColor: ['#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF', '#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF', '#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF', '#52CDFF)'],
+                                            pointBorderColor: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff',],
+                                        }]
+                                    };
+
+                                    var salesTopOptions = {
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        scales: {
+                                            yAxes: [{
+                                                gridLines: {
+                                                    display: true,
+                                                    drawBorder: false,
+                                                    color: "#F0F0F0",
+                                                    zeroLineColor: '#F0F0F0',
+                                                },
+                                                ticks: {
+                                                    beginAtZero: false,
+                                                    autoSkip: true,
+                                                    maxTicksLimit: 4,
+                                                    fontSize: 10,
+                                                    color: "#6B778C"
+                                                }
+                                            }],
+                                            xAxes: [{
+                                                gridLines: {
+                                                    display: false,
+                                                    drawBorder: false,
+                                                },
+                                                ticks: {
+                                                    beginAtZero: false,
+                                                    autoSkip: true,
+                                                    maxTicksLimit: 7,
+                                                    fontSize: 10,
+                                                    color: "#6B778C"
+                                                }
+                                            }],
+                                        },
+                                        legend: false,
+                                        legendCallback: function (chart) {
+                                            var text = [];
+                                            text.push('<div class="chartjs-legend"><ul>');
+                                            for (var i = 0; i < chart.data.datasets.length; i++) {
+                                                console.log(chart.data.datasets[i]); // see what's inside the obj.
+                                                text.push('<li>');
+                                                text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+                                                text.push(chart.data.datasets[i].label);
+                                                text.push('</li>');
+                                            }
+                                            text.push('</ul></div>');
+                                            return text.join("");
+                                        },
+
+                                        elements: {
+                                            line: {
+                                                tension: 0.4,
+                                            }
+                                        },
+                                        tooltips: {
+                                            backgroundColor: 'rgba(31, 59, 179, 1)',
+                                        }
+                                    }
+                                    var salesTop = new Chart(graphGradient, {
+                                        type: 'line',
+                                        data: salesTopData,
+                                        options: salesTopOptions
+                                    });
+                                    document.getElementById('performance-line-legend').innerHTML = salesTop.generateLegend();
+                                }
+                                if ($("#performaneLine-dark").length) {
+                                    var graphGradient = document.getElementById("performaneLine-dark").getContext('2d');
+                                    var graphGradient2 = document.getElementById("performaneLine-dark").getContext('2d');
+                                    var saleGradientBg = graphGradient.createLinearGradient(5, 0, 5, 100);
+                                    saleGradientBg.addColorStop(0, 'rgba(26, 115, 232, 0.18)');
+                                    saleGradientBg.addColorStop(1, 'rgba(34, 36, 55, 0.5)');
+                                    var saleGradientBg2 = graphGradient2.createLinearGradient(10, 0, 0, 150);
+                                    saleGradientBg2.addColorStop(0, 'rgba(0, 208, 255, 0.19)');
+                                    saleGradientBg2.addColorStop(1, 'rgba(34, 36, 55, 0.2)');
+                                    var salesTopDataDark = {
+                                        labels: ["SUN", "sun", "MON", "mon", "TUE", "tue", "WED", "wed", "THU", "thu", "FRI", "fri", "SAT"],
+                                        datasets: [{
+                                            label: '# of Votes',
+                                            data: [50, 110, 60, 290, 200, 115, 130, 170, 90, 210, 240, 280, 200],
+                                            backgroundColor: saleGradientBg,
+                                            borderColor: [
+                                                '#1F3BB3',
+                                            ],
+                                            borderWidth: 1.5,
+                                            fill: true, // 3: no fill
+                                            pointBorderWidth: 1,
+                                            pointRadius: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+                                            pointHoverRadius: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                                            pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3', '#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3', '#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3', '#1F3BB3)'],
+                                            pointBorderColor: ['#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437',],
+                                        }, {
+                                            label: '# of Votes',
+                                            data: [30, 150, 190, 250, 120, 150, 130, 20, 30, 15, 40, 95, 180],
+                                            backgroundColor: saleGradientBg2,
+                                            borderColor: [
+                                                '#52CDFF',
+                                            ],
+                                            borderWidth: 1.5,
+                                            fill: true, // 3: no fill
+                                            pointBorderWidth: 1,
+                                            pointRadius: [0, 0, 0, 4, 0],
+                                            pointHoverRadius: [0, 0, 0, 2, 0],
+                                            pointBackgroundColor: ['#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF', '#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF', '#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF', '#52CDFF)'],
+                                            pointBorderColor: ['#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437', '#222437',],
+                                        }]
+                                    };
+
+                                    var salesTopOptionsDark = {
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        scales: {
+                                            yAxes: [{
+                                                gridLines: {
+                                                    display: true,
+                                                    drawBorder: false,
+                                                    color: "rgba(255,255,255,.05)",
+                                                    zeroLineColor: "rgba(255,255,255,.05)",
+                                                },
+                                                ticks: {
+                                                    beginAtZero: false,
+                                                    autoSkip: true,
+                                                    maxTicksLimit: 4,
+                                                    fontSize: 10,
+                                                    color: "#6B778C"
+                                                }
+                                            }],
+                                            xAxes: [{
+                                                gridLines: {
+                                                    display: false,
+                                                    drawBorder: false,
+                                                },
+                                                ticks: {
+                                                    beginAtZero: false,
+                                                    autoSkip: true,
+                                                    maxTicksLimit: 7,
+                                                    fontSize: 10,
+                                                    color: "#6B778C"
+                                                }
+                                            }],
+                                        },
+                                        legend: false,
+                                        legendCallback: function (chart) {
+                                            var text = [];
+                                            text.push('<div class="chartjs-legend"><ul>');
+                                            for (var i = 0; i < chart.data.datasets.length; i++) {
+                                                console.log(chart.data.datasets[i]); // see what's inside the obj.
+                                                text.push('<li>');
+                                                text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+                                                text.push(chart.data.datasets[i].label);
+                                                text.push('</li>');
+                                            }
+                                            text.push('</ul></div>');
+                                            return text.join("");
+                                        },
+
+                                        elements: {
+                                            line: {
+                                                tension: 0.4,
+                                            }
+                                        },
+                                        tooltips: {
+                                            backgroundColor: 'rgba(31, 59, 179, 1)',
+                                        }
+                                    }
+                                    var salesTopDark = new Chart(graphGradient, {
+                                        type: 'line',
+                                        data: salesTopDataDark,
+                                        options: salesTopOptionsDark
+                                    });
+                                    document.getElementById('performance-line-legend-dark').innerHTML = salesTopDark.generateLegend();
+                                }
+                                if ($("#datepicker-popup").length) {
+                                    $('#datepicker-popup').datepicker({
+                                        enableOnReadonly: true,
+                                        todayHighlight: true,
+                                    });
+                                    $("#datepicker-popup").datepicker("setDate", "0");
+                                }
+                                if ($("#status-summary").length) {
+                                    var statusSummaryChartCanvas = document.getElementById("status-summary").getContext('2d');;
+                                    var statusData = {
+                                        labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI"],
+                                        datasets: [{
+                                            label: '# of Votes',
+                                            data: [30, 68, 70, 10, 12, 80],
+                                            backgroundColor: "#ffcc00",
+                                            borderColor: [
+                                                '#F0F0F0',
+                                            ],
+                                            borderWidth: 2,
+                                            fill: false, // 3: no fill
+                                            pointBorderWidth: 0,
+                                            pointRadius: [0, 0, 0, 0, 0, 0],
+                                            pointHoverRadius: [0, 0, 0, 0, 0, 0],
+                                        }]
+                                    };
+
+                                    var statusOptions = {
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        scales: {
+                                            yAxes: [{
+                                                display: false,
+                                                gridLines: {
+                                                    display: false,
+                                                    drawBorder: false,
+                                                    color: "#F0F0F0"
+                                                },
+                                                ticks: {
+                                                    beginAtZero: false,
+                                                    autoSkip: true,
+                                                    maxTicksLimit: 4,
+                                                    fontSize: 10,
+                                                    color: "#6B778C"
+                                                }
+                                            }],
+                                            xAxes: [{
+                                                display: false,
+                                                gridLines: {
+                                                    display: false,
+                                                    drawBorder: false,
+                                                },
+                                                ticks: {
+                                                    beginAtZero: false,
+                                                    autoSkip: true,
+                                                    maxTicksLimit: 7,
+                                                    fontSize: 10,
+                                                    color: "#6B778C"
+                                                }
+                                            }],
+                                        },
+                                        legend: false,
+
+                                        elements: {
+                                            line: {
+                                                tension: 0.4,
+                                            }
+                                        },
+                                        tooltips: {
+                                            backgroundColor: 'rgba(0,0,0,0)',
+                                        }
+                                    }
+                                    var statusSummaryChart = new Chart(statusSummaryChartCanvas, {
+                                        type: 'line',
+                                        data: statusData,
+                                        options: statusOptions
+                                    });
+                                }
+                                if ($('#totalVisitors').length) {
+                                    var bar = new ProgressBar.Circle(totalVisitors, {
+                                        color: '#fff',
+                                        // This has to be the same size as the maximum width to
+                                        // prevent clipping
+                                        strokeWidth: 15,
+                                        trailWidth: 15,
+                                        easing: 'easeInOut',
+                                        duration: 1400,
+                                        text: {
+                                            autoStyleContainer: false
+                                        },
+                                        from: {
+                                            color: '#52CDFF',
+                                            width: 15
+                                        },
+                                        to: {
+                                            color: '#677ae4',
+                                            width: 15
+                                        },
+                                        // Set default step function for all animate calls
+                                        step: function (state, circle) {
+                                            circle.path.setAttribute('stroke', state.color);
+                                            circle.path.setAttribute('stroke-width', state.width);
+
+                                            var value = Math.round(circle.value() * 100);
+                                            if (value === 0) {
+                                                circle.setText('');
+                                            } else {
+                                                circle.setText(value);
+                                            }
+
+                                        }
+                                    });
+
+                                    bar.text.style.fontSize = '0rem';
+                                    bar.animate(.64); // Number from 0.0 to 1.0
+                                }
+                                if ($('#visitperday').length) {
+                                    var bar = new ProgressBar.Circle(visitperday, {
+                                        color: '#fff',
+                                        // This has to be the same size as the maximum width to
+                                        // prevent clipping
+                                        strokeWidth: 15,
+                                        trailWidth: 15,
+                                        easing: 'easeInOut',
+                                        duration: 1400,
+                                        text: {
+                                            autoStyleContainer: false
+                                        },
+                                        from: {
+                                            color: '#34B1AA',
+                                            width: 15
+                                        },
+                                        to: {
+                                            color: '#677ae4',
+                                            width: 15
+                                        },
+                                        // Set default step function for all animate calls
+                                        step: function (state, circle) {
+                                            circle.path.setAttribute('stroke', state.color);
+                                            circle.path.setAttribute('stroke-width', state.width);
+
+                                            var value = Math.round(circle.value() * 100);
+                                            if (value === 0) {
+                                                circle.setText('');
+                                            } else {
+                                                circle.setText(value);
+                                            }
+
+                                        }
+                                    });
+
+                                    bar.text.style.fontSize = '0rem';
+                                    bar.animate(.34); // Number from 0.0 to 1.0
+                                }
+                                if ($("#marketingOverview").length) {
+                                    var marketingOverviewChart = document.getElementById("marketingOverview").getContext('2d');
+
+                                }
+                                var marketingOverviewData = {
+                                    labels: ["JAN", "FEV", "MAR", "ABRIL", "MAIO", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"],
+                                    datasets: [{
+                                        label: 'Acertos',
+                                        data: [parseInt('{{ dados["acertosMes"][0] }}'), parseInt('{{ dados["acertosMes"][1] }}'), parseInt('{{ dados["acertosMes"][2] }}'), parseInt('{{ dados["acertosMes"][3] }}'), parseInt('{{ dados["acertosMes"][4] }}'), parseInt('{{ dados["acertosMes"][5] }}'), parseInt('{{ dados["acertosMes"][6] }}'), parseInt('{{ dados["acertosMes"][7] }}'), parseInt('{{ dados["acertosMes"][8] }}'), parseInt('{{ dados["acertosMes"][9] }}'), parseInt('{{ dados["acertosMes"][10] }}'), parseInt('{{ dados["acertosMes"][11] }}')],
+                                        backgroundColor: "#32CD32",
+                                        borderColor: [
+                                            '#32CD32',
+                                        ],
+
+
+
+                                        borderWidth: 0,
+                                        fill: true, // 3: no fill
+
+                                    }, {
+                                        label: 'Erros',
+                                        data: [parseInt('{{ dados["errosMes"][0] }}'), parseInt('{{ dados["errosMes"][1] }}'), parseInt('{{ dados["errosMes"][2] }}'), parseInt('{{ dados["errosMes"][3] }}'), parseInt('{{ dados["errosMes"][4] }}'), parseInt('{{ dados["errosMes"][5] }}'), parseInt('{{ dados["errosMes"][6] }}'), parseInt('{{ dados["errosMes"][7] }}'), parseInt('{{ dados["errosMes"][8] }}'), parseInt('{{ dados["errosMes"][9] }}'), parseInt('{{ dados["errosMes"][10] }}'), parseInt('{{ dados["errosMes"][11] }}')],
+                                        backgroundColor: "#A52A2A",
+                                        borderColor: [
+                                            '#A52A2A',
+                                        ],
+                                        borderWidth: 0,
+                                        fill: true, // 3: no fill
+                                    }]
+                                };
+
+                                var marketingOverviewOptions = {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        yAxes: [{
+                                            gridLines: {
+                                                display: true,
+                                                drawBorder: false,
+                                                color: "#F0F0F0",
+                                                zeroLineColor: '#F0F0F0',
+                                            },
+                                            ticks: {
+                                                beginAtZero: true,
+                                                autoSkip: true,
+                                                maxTicksLimit: 5,
+                                                fontSize: 10,
+                                                color: "#6B778C"
+                                            }
+                                        }],
+                                        xAxes: [{
+                                            stacked: true,
+                                            barPercentage: 0.35,
+                                            gridLines: {
+                                                display: false,
+                                                drawBorder: false,
+                                            },
+                                            ticks: {
+                                                beginAtZero: false,
+                                                autoSkip: true,
+                                                maxTicksLimit: 12,
+                                                fontSize: 10,
+                                                color: "#6B778C"
+                                            }
+                                        }],
+                                    },
+                                    legend: false,
+                                    legendCallback: function (chart) {
+                                        var text = [];
+                                        text.push('<div class="chartjs-legend"><ul>');
+                                        for (var i = 0; i < chart.data.datasets.length; i++) {
+                                            console.log(chart.data.datasets[i]); // see what's inside the obj.
+                                            text.push('<li class="text-muted text-small">');
+                                            text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+                                            text.push(chart.data.datasets[i].label);
+                                            text.push('</li>');
+                                        }
+                                        text.push('</ul></div>');
+                                        return text.join("");
+                                    },
+
+                                    elements: {
+                                        line: {
+                                            tension: 0.4,
+                                        }
+                                    },
+                                    tooltips: {
+                                        backgroundColor: 'rgba(31, 59, 179, 1)',
+                                    }
+                                };
+                                var marketingOverview = new Chart(marketingOverviewChart, {
+                                    type: 'bar',
+                                    data: marketingOverviewData,
+                                    options: marketingOverviewOptions
+                                });
+                                document.getElementById('marketing-overview-legend').innerHTML = marketingOverview.generateLegend();
+
+
+
+                                if ($("#leaveReport").length) {
+                                    var leaveReportChart = document.getElementById("leaveReport").getContext('2d');
+                                    var leaveReportData = {
+                                        labels: ["BIO", "FIL", "FÍS", "GEO", "HIS", "ING", "MAT", "POR", "QUÍ"],
+                                        datasets: [{
+                                            label: 'Acertos',
+                                            data: [parseInt('{{ dados["acertosMateria"][0] }}'), parseInt('{{ dados["acertosMateria"][1] }}'), parseInt('{{ dados["acertosMateria"][2] }}'), parseInt('{{ dados["acertosMateria"][3] }}'), parseInt('{{ dados["acertosMateria"][4] }}'), parseInt('{{ dados["acertosMateria"][5] }}'), parseInt('{{ dados["acertosMateria"][6] }}'), parseInt('{{ dados["acertosMateria"][7] }}'), parseInt('{{ dados["acertosMateria"][8] }}')],
+                                            backgroundColor: "#32CD32",
+                                            borderColor: [
+                                                '#32CD32',
+                                            ],
+                                            borderWidth: 0,
+                                            fill: true, // 3: no fill
+
+                                        },
+                                        {
+                                            label: 'Erros',
+                                            data: [parseInt('{{ dados["errosMateria"][0] }}'), parseInt('{{ dados["errosMateria"][1] }}'), parseInt('{{ dados["errosMateria"][2] }}'), parseInt('{{ dados["errosMateria"][3] }}'), parseInt('{{ dados["errosMateria"][4] }}'), parseInt('{{ dados["errosMateria"][5] }}'), parseInt('{{ dados["errosMateria"][6] }}'), parseInt('{{ dados["errosMateria"][7] }}'), parseInt('{{ dados["errosMateria"][8] }}')],
+                                            backgroundColor: "#5e2129",
+
+                                            borderColor: [
+                                                '#5e2129',
+                                            ],
+                                            borderWidth: 0,
+                                            fill: true, // 3: no fill
+                                        }]
+                                    };
+
+
+
+                                    var leaveReportOptions = {
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        scales: {
+                                            yAxes: [{
+                                                gridLines: {
+                                                    display: true,
+                                                    drawBorder: false,
+                                                    color: "rgba(255,255,255,.05)",
+                                                    zeroLineColor: "rgba(255,255,255,.05)",
+                                                },
+                                                ticks: {
+                                                    beginAtZero: true,
+                                                    autoSkip: true,
+                                                    maxTicksLimit: 9,
+                                                    fontSize: 10,
+                                                    color: "#6B778C"
+                                                }
+                                            }],
+                                            xAxes: [{
+                                                barPercentage: 0.5,
+                                                gridLines: {
+                                                    display: false,
+                                                    drawBorder: false,
+                                                },
+                                                ticks: {
+                                                    beginAtZero: false,
+                                                    autoSkip: true,
+                                                    maxTicksLimit: 9,
+                                                    fontSize: 10,
+                                                    color: "#6B778C"
+                                                }
+                                            }],
+                                        },
+                                        legend: false,
+
+                                        elements: {
+                                            line: {
+                                                tension: 0.4,
+                                            }
+                                        },
+                                        tooltips: {
+                                            backgroundColor: 'rgba(31, 59, 179, 1)',
+                                        }
+                                    }
+                                    var leaveReport = new Chart(leaveReportChart, {
+                                        type: 'bar',
+                                        data: leaveReportData,
+                                        options: leaveReportOptions
+                                    });
+                                }
+
+
+
+                            });
+                        })(jQuery);
+
+
+
+
+                    </script>
+
+
+
+
+                    <div id="listaProvaModal" class="modal fade" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog " role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="listaProvaModalLabel">Gerar prova</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body ">
+                                    <form method="post" id="insert_form" action="{{url_for('prova')}}">
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 col-form-label">Prova:</label>
+                                            <!-- Example single danger button -->
+                                            <select id="select_prova" class="form-select form-select-sm"
+                                                aria-label=".form-select-sm example" name="prova">
+                                                <option selected value="">Selecionar...</option>
+                                                <option value="ENEM">Enem</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 mr-4">Ano:</label>
+                                            <select id="select_ano" class="form-select form-select-sm"
+                                                aria-label=".form-select-sm example" name="ano">
+                                                <option selected value="">Selecionar...</option>
+                                                <option value="2009">2009</option>
+                                                <option value="2010">2010</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2018">2018</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label class="col-sm-2 mr-4">Fase:</label>
+                                            <select id="select_fase" class="form-select form-select-sm"
+                                                aria-label=".form-select-sm example" name="fase">
+                                                <option selected value="">Selecionar...</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
+                                        <div class="row mb-3">
+
+                                            <label class="col mr-4">Qtd. Questões:</label>
+                                            <input id="qtd_questoes" name="qtdquestoes" type="text" class="form-control"
+                                                id="nome">
+
+                                        </div>
+
+
+
+                                        <div class="row mb-4 ml-3">
+                                            <label class="col-sm-2 col-form-label mr-2">Matéria:</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="materia"
+                                                    value="PORTUGUES" id="portugues">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Português
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" name="materia"
+                                                    value="MATEMATICA" id="matematica">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Matemática
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" name="materia"
+                                                    value="HISTORIA" id="historia">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    História
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" name="materia"
+                                                    value="GEOGRAFIA" id="geografia">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Geografia
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" name="materia"
+                                                    value="BIOLOGIA" id="biologia">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Biologia
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" name="materia"
+                                                    value="INGLES" id="ingles">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Inglês
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" name="materia"
+                                                    value="QUIMICA" id="quimica">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Química
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" name="materia"
+                                                    value="FISICA" id="fisica">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Física
+                                                </label>
+                                                <input class="form-check-input" type="checkbox" name="materia"
+                                                    value="FILOSOFIA - SOCIOLOGIA" id="filosocio">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Filosofia / Sociologia
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-row">
+                                            <div class="col-sm-10">
+                                                <input id="usuario" name="usuario" type="hidden" value='{{usuario}}'>
+                                                <input type="submit" name="gerarProva" id="gerarProva"
+                                                    value="Gerar prova!" class="btn btn-outline-success">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</body>
+
+</html>

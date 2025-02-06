@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Correção - Vestibulaê </title>
+
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../static/vendors/feather/feather.css">
+    <link rel="stylesheet" href="../static/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../static/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../static/vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="../static/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../static/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"> -->
+    <link rel="stylesheet" href="../static/js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="../static/css/questoes.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    {% set questoes = prova["questoes"]%} {% set respostas = prova["respostas"]%}{% set gabaritos = prova["gabaritos"]%}
+    {% for questao in questoes %}
+    <!--Primeira pergunta-->
+    <div id="{{loop.index}}" class="container mt-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10 col-lg-10">
+                <div class="border">
+                    <div class="question bg-white p-3 border-bottom">
+                        <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                            <h4>Prova </h4>
+                            <span>{{questao["materia"]}}</span><span>{{loop.index}}/{{questoes|length}}</span>
+                        </div>
+                    </div>
+                    <div class="question bg-white p-3 border-bottom">
+                        <div class="d-flex flex-row align-items-center question-title">
+                            <h4 id="enunciado" style="white-space: pre-line">{{questao["enunciado"]}}</h4>
+                        </div>
+                        <form method="post" action="{{url_for('home')}}">
+                            {% set i = loop.index-1 %} {% for resposta in respostas[i] %} {% if resposta["alternativa"]
+                            == respostas_usuario[i]["alternativa"]%}
+                            <div class='ans ml-2'>
+                                <label class='radio'> <input type='radio' name='resposta_{{questao["id"]}}'
+                                        value='{{resposta["alternativa"]}}' checked>
+                                    <span>{{resposta["enunciado"]}}</span></label> {% if resposta["id"] ==
+                                gabaritos[i]["resposta_id"]%}
+                                <img src="../static/img/check.png" width="30px" height="30px"> {%else%}
+                                <img src="../static/img/wrong.png" width="30px" height="30px"> {%endif%}
+                            </div>
+                            {%else%}
+                            <div class='ans ml-2'>
+                                <label class='radio'> <input type='radio' name='resposta_{{questao["id"]}}'
+                                        value='{{resposta["alternativa"]}}'>
+                                    <span>{{resposta["enunciado"]}}</span></label> {% if resposta["id"] ==
+                                gabaritos[i]["resposta_id"]%}
+                                <img src="../static/img/check.png" width="30px" height="30px"> {%else%}
+                                <img src="../static/img/wrong.png" width="30px" height="30px"> {%endif%}
+                            </div>
+                            {%endif%} {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {%endfor%}
+
+
+    <!--<input type="submit" name="btnResponder" value="Correção!">-->
+
+
+    <input id="usuario" name="usuario" type="hidden" value="{{usuario}}">
+    <div class='d-flex flex-row-reverse justify-content-center align-items-RIG p-3 bg-white'><button type='submit'
+            name='btnResponder' class='btn btn-primary border-success align-items-center btn-success'>Voltar a
+            Home</button>
+    </div>
+    </form>
+    <!--Botões resposta-->
+    <!--
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10 col-lg-10">
+                <div class="border">
+                    <div class="question bg-white p-3 border-bottom">
+                        <div class="align-items-center mcq">
+
+                            {%for q in questoes%}
+                            <a href="#{{loop.index}}"> <button type="button" class="btn btn-success btn-sm">{{loop.index}}</button></a>
+                            {%endfor%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="vendors/progressbar.js/progressbar.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+</body>
+
+
+
+
+</html>

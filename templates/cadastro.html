@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Vestibulaê</title>
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,600,700,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="../static/assets/css/Contact-form.css">
+    <link rel="stylesheet" href="../static/assets/css/Faq-by-pomdre-1.css">
+    <link rel="stylesheet" href="../static/assets/css/Faq-by-pomdre.css">
+    <link rel="stylesheet" href="../static/assets/css/FAQ-Frequentlly-Asked-Questions-1.css">
+    <link rel="stylesheet" href="../static/assets/css/FAQ-Frequentlly-Asked-Questions.css">
+    <link rel="stylesheet" href="../static/assets/css/FAQ-Section-for-BS5.css">
+    <link rel="stylesheet" href="../static/assets/css/OcOrato---Login-form-1.css">
+    <link rel="stylesheet" href="../static/assets/css/OcOrato---Login-form.css">
+    <link rel="stylesheet" href="../static/assets/css/Registration-Form-with-Photo.css">
+</head>
+
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top navbar-custom" style="background: #134848;">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><img class="navbar-brand brand-logo"
+                src="../static/assets/img/logo.png" style="width: 300px;"></a><button data-bs-toggle="collapse"
+            class="navbar-toggler" data-bs-target="#navbarResponsive"><span class="visually-hidden">Toggle
+                navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"></li>
+                <li class="nav-item"><a class="nav-link" href="{{url_for('login')}}">Entrar</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<body style="background: #1e6363;">
+
+    <div class="w-100 mt-5 mb-5">
+        <section class="register-photo container-fluid" style="background: #1e6363;padding-top: 120px;">
+            <div class="form-container">
+                <div class="image-holder img-fluid" style="margin-top: 25px;"></div>
+                <form method="post" action="{{url_for('cadastrar')}}" style="background: rgba(44,40,52,0.72);">
+                    <h2 class="text-center" style="height: 59px;width: 278px;color: rgb(255,255,255);">Crie sua conta
+                        gratuitamente</h2>
+                    <div class="mb-3 w-100"><input class="form-control w-100" type="text" name="nome" placeholder="Nome"
+                            style="color: rgb(0,0,0);font-size: 16px;background: rgb(255,255,255);border-style: none;border-color: rgb(255,255,255);font-family: Catamaran, sans-serif;">
+                    </div>
+                    <div class="mb-3 w-100"><input class="form-control w-100" type="email" name="email"
+                            placeholder="E-mail"
+                            style="color: rgb(0,0,0);font-size: 16px;background: rgb(255,255,255);border-style: none;border-color: rgb(255,255,255);font-family: Catamaran, sans-serif;">
+                    </div>
+                    <div class="mb-3 w-100"><input class="form-control w-100" type="password" name="senha"
+                            placeholder="Senha" style="color: rgb(0,0,0);"></div>
+                    <div class="mb-3"><input class="form-control w-100" type="password" name="confirmar_senha"
+                            placeholder="Confirme sua senha"></div>
+                    <div class="mb-3"></div>
+                    <div class="mb-3 text-center"><button
+                            class="btn btn-success border rounded d-block text-center w-100" type="submit"
+                            style="background: #41EAB7;color: #287171;">Cadastrar</button></div><a class="already"
+                        href="{{url_for('login')}}" style="color: rgb(255,255,255);">Já possui uma conta? Faça login
+                        aqui!</a>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer class="text-start py-4 fixed-bottom " style="color: #2C9494;background: #134848;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6"><a class="mr-5" href="sobre.html"
+                        style="margin-right: 20px;color: rgb(255,255,255);margin-left: 50px;">Sobre</a><a
+                        href="contato.html" style="margin-right: 20px;color: rgb(255,255,255);">Contato</a></div>
+                <div class="col-md-6">
+                    <p class="d-flex flex-row-reverse  text-center text-white m-0 small">Copyright&nbsp;© Vestibualê
+                        2021</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/assets/js/Faq-by-pomdre.js"></script>
+</body>
+
+</html>
